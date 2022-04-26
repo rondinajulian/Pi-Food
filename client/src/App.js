@@ -1,11 +1,13 @@
 import './App.css';
 
+import Landing from './components/Landing';
+
 function App() {
   return (
     <div className="App">
-      <h1>toca para devoler</h1>
-      <button>toca</button>
-      <div id="get"></div>
+      <section>
+        <Landing></Landing>
+      </section>
     </div>
   );
 }

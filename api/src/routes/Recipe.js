@@ -1,9 +1,8 @@
 const router = require("express").Router();
-const { conn, Recipe, Diet } = require("../db");
+const { conn, Recipe, Diet} = require("../db");
 
 
 router.post("/", async function (req, res) {
-
   const { title, summary, score, image, healthyness, steps, diets } = req.body;
 
   try {
@@ -15,12 +14,17 @@ router.post("/", async function (req, res) {
       healthyness,
       steps,
     });
-    // await Diet.setDiets(diets)
-    res.status(200).json(recipe);
 
+    const dietsAdd = await Diet.findOrCreate({
+      where: { name: diets },
+    });
+
+    recipe.addDiet(dietsAdd);
+
+    res.send('Receta creada');
 
   } catch (error) {
-    res.status(404).send("Error en alguno de los datos provistos");
+    res.send(error);
   }
 });
 
