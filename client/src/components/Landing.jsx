@@ -1,6 +1,6 @@
 import React,{Component} from "react";
 import './Landing.css';
-// import {Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import '../socialbar/fonts.css'
 
 
@@ -17,9 +17,9 @@ class Landing extends Component {
             Hello, you are about to enter my PI, a project created for Henry's
             bootcamp.
           </p>
-              {/* <Link to='/home'> */}
+              <Link to='/Home' class="button"> 
               <button class="button"><span>Insert</span></button>
-                 {/* </Link> */}
+               </Link>
         </div>
 
         <div class="redes">

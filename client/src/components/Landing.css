@@ -75,6 +75,7 @@ body{
     text-transform: uppercase;
     border-radius: 10px;
     margin-top: 3%;
+    text-decoration: none;
 }
 
 .button:hover{
