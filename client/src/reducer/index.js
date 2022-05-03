@@ -56,8 +56,44 @@ const initialState = {
       return {
         ...state,
         filterRecipes: action.payload === "all" ? state.recipes : createdFilter,
+    } } 
+
+
+    if (action.type === "CHANGE_PAGE") {
+
+      return {
+          ...state,
+          currentPage: action.payload
+      };
+    }
+
+    if (action.type === "REMOVE_DIET_FORM") {
+      return {
+        ...state,
+        recipeForm:{
+          ...state.recipeForm,
+          diets:state.recipeForm.diets.filter(diet=> diet !== action.payload)
+        }
+      }
     }  
 
+    if (action.type === "ADD_DIET_FORM") {
+      return {
+        ...state,
+        recipeForm:{
+          ...state.recipeForm,
+          diets:state.recipeForm.diets.includes(action.payload)?
+          state.recipeForm.diets:state.recipeForm.diets.concat(action.payload)
+        }
+      }
+    }
+
+    if (action.type === "SET_RECIPE_FORM") {
+      return {
+          ...state,
+          recipeForm: action.payload
+      };
+    }
 
     return state;
   }

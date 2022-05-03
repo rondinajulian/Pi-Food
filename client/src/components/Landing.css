@@ -21,7 +21,7 @@ body{
 }
 
 .textos{
-    height: 850px;
+    height: 700px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -76,6 +76,7 @@ body{
     border-radius: 10px;
     margin-top: 3%;
     text-decoration: none;
+  
 }
 
 .button:hover{

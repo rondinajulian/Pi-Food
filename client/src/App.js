@@ -4,6 +4,7 @@ import './App.css';
 import Landing from './components/Landing';
 import Home from './components/Home';
 import CreateRecipe from './components/CreateRecipe';
+import Card from './components/Card';
 
 function App() {
   // const dispatch=useDispatch()
@@ -14,6 +15,7 @@ function App() {
           <Route exact path="/" element={<Landing/>} />
           <Route path="/home" element={<Home/>} />
           <Route path="/createRecipe" element={<CreateRecipe/>}/>
+          
           {/* <Route path="/home/:id" element={<Detail/>}/>
           <Route path="/create-recipe" element={<Form/>}/>
           <Route path="/update-recipe/:id" element={<Form/>}/>

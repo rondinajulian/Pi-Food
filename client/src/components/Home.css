@@ -7,7 +7,7 @@
 
 body{
     font-family:'Times New Roman', Times, serif;
-    /* background-image:linear-gradient(to top, #e6e9f0b0 0%, #eef1f5d0 100%),url(../images/Landing\ page.jpg); */
+    background-image:linear-gradient(to top, #e6e9f0b0 0%, #eef1f5d0 100%),url(../images/Landing\ page.jpg);
 }
 
 .navbar{
@@ -17,7 +17,7 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid rgb(0, 0, 0);
     box-shadow: 5px 0 10px rgba(0, 0, 0, .6) ;
 }
 
@@ -26,8 +26,8 @@ body{
 }
 
 .logo{
-    color: white;
-    font-size: 45px;
+    color: black;
+    font-size: 35px;
     padding: 0 50px;
     font-weight: bold;
     list-style: none;
@@ -48,12 +48,12 @@ body{
 }
 
 .menu_items li a{
-    padding:  7px 13px;
+    padding:  7px 10px;
     text-decoration: none;
     font-size: 18px;
     display:block;
     text-transform: uppercase;
-    color: white;
+    color: black;
     font-weight: bold;
 }
 
@@ -62,3 +62,38 @@ body{
     background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
     transition: .10s;
 }
+
+.title{
+    text-align: center;
+    font-size: 40px;
+    font-family: sans-serif;
+    font-weight: 100;
+    margin-bottom: 700px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer {   
+    display: static;
+    width: 100%;
+    bottom: 0         ;
+    left: 0;
+    right: 0;    
+    z-index:3
+  }
+
+
+.content .recipeID{
+      text-decoration: none;
+      color: black;
+      width: 30px;
+      height: 20px;
+     
+  }
+
+  .navbar .searchBar{
+    width: 25%;
+    margin: 0;
+  }

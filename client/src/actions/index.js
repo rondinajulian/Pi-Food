@@ -2,7 +2,7 @@ import axios from "axios";
 
 export function getRecipes() {
   return async function (dispatch) {
-    let recipes = await axios.get("/recipes");
+    let recipes = await axios.get("http://localhost:3002/recipes");
     return dispatch({
       type: "GET_RECIPES",
       payload: recipes.data,
@@ -12,7 +12,7 @@ export function getRecipes() {
 
 export function getRecipesByTitle(title) {
   return async function (dispatch) {
-    let recipes = await axios.get("http://localhost:3001/api/recipes?name="+ title);
+    let recipes = await axios.get("http://localhost:3002/recipes?name="+ title);
     return dispatch({
       type: "GET_RECIPES_TITLE",
       payload: recipes.data,
@@ -22,7 +22,7 @@ export function getRecipesByTitle(title) {
 
 export function getRecipesByid(id) {
   return async function (dispatch) {
-    const recipes = axios.get("http://localhost:3002/api/recipes?" + id)
+    const recipes = axios.get("http://localhost:3002/recipes?" + id)
     return dispatch(dispatch({ type: "GET_RECIPES_ID", payload: recipes.data}))
   };
 }
@@ -68,4 +68,20 @@ export function filterRecipesCreated(payload, origin) {
     type: "FILTER_CREATED",
     payload,
   };
+}
+
+export function changePage(payload) {
+  return { type: "CHANGE_PAGE", payload };
+}
+
+export function addDietForm(payload) {
+  return { type: "ADD_DIET_FORM", payload };
+}
+
+export function setRecipeForm(payload) {
+  return { type: "SET_RECIPE_FORM", payload };
+}
+
+export function removeDietForm(payload) {
+  return { type: "REMOVE_DIET_FORM", payload };
 }
