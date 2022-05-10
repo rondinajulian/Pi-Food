@@ -30,7 +30,7 @@ try {
       steps:(r.analyzedInstructions && r.analyzedInstructions.steps?r.analyzedInstructions.steps.map(item=>item.step).join("|"):'')
       }))
     }
-    else res.send('No se encontraron datos')
+    else res.status(404).send('No se encontraron datos')
 
     // ----filtro dentro de la api----
     if(title) recipes = recipes.filter(r=> r.title.includes(title))  

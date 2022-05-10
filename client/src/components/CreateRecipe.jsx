@@ -1,124 +1,78 @@
 import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import { useSelector,useDispatch } from 'react-redux';
-import { addDietForm, postRecipe, removeDietForm, setRecipeForm } from '../actions';
-import './createRecipe.css'
+import { addDietForm, postRecipe, removeDietForm} from '../actions';
+import './CreateRecipe.css'
 
 
 
 export default function CreateRecipe() {
   const dispatch = useDispatch();
-  const recipeForm = useSelector((state) => state.recipeForm);
+  const formulario = document.getElementById("formulario")
+  const [loaded, setLoaded] = useState(false);
+  const [post, setPost] = useState({
+    title:'',
+    summary:'',
+    score:0,
+    healthyness:0,
+    steps:'',
+    image:'',
+    diets:[]
+  });
 
-
-  function handleRecipeChange(e) {
-    dispatch(setRecipeForm({ ...recipeForm, [e.target.name]: e.target.value }));
+  function handlechange(e){
+    setPost({
+      ...post,
+      [e.target.name]:e.target.value
+    })
+    console.log(post)
   }
 
-  function onChangeAddDiet(diet) {
-    dispatch(addDietForm(diet));
+  function handleSubmit(e){
+    e.preventDefault();
+    dispatch(postRecipe(post));
+    formulario.reset();
+    alert("Receta creada con exito")
   }
-  function onClickRemoveDiet(diet) {
-    dispatch(removeDietForm(diet));
-  }
-
-
 
   return (
-    <div class="conteiner">
-    <form 
-    onSubmit={(e) => {
-      e.preventDefault();
-      dispatch(postRecipe(recipeForm));
-      console.log(recipeForm)
-    }}
-  >
-    <div class="divflex" >
-   
-        <Link to="/Home" class="buttonX">
-          <button class="close">X</button>
+    <form onSubmit={(e)=>handleSubmit(e)} id="formulario">
+      <div class="modalHeader">
+        <Link to="/Home">
+        <span class="X">X</span>
         </Link>
-        <h1>Create you Recipe</h1>
-        <ul>
-          <li>
-          <span>Title</span>
-            <input
-              onChange={handleRecipeChange}
-              value={recipeForm.title}
-              id="title"
-              type="text"
-              placeholder="ej:Papas Fritas"
-              name="title"
-            />
-          </li>
-          <li>
-            <span class="span">Summary</span>
-            <textarea
-              rows="3"
-              cols="120"
-              onChange={handleRecipeChange}
-              value={recipeForm.summary}
-              id="summary"
-              type="textarea"
-              placeholder=""
-              name="summary"
-            ></textarea>
-            <p></p>
-          </li>
-          <li>
-            <span class="span">Score</span>
-            <input
-              onChange={handleRecipeChange}
-              value={recipeForm.score}
-              id="score"
-              type="number"
-              min="0"
-              max="100"
-              placeholder=""
-              name="score"
-            />
-            <p></p>
-          </li>
-          <li>
-            <span class="span">Image</span>
-            <input
-              onChange={handleRecipeChange}
-              value={recipeForm.image}
-              id="image"
-              type="url"
-              min="0"
-              max="100"
-              placeholder=""
-              name="image"
-            />
-            <p></p>
-          </li>
-          <li>
-            <span class="span">Healthyness</span>
-            <input onChange={handleRecipeChange} value={recipeForm.healthyness} id='healthyness' type = 'number' min="0" max="100" placeholder = '' name='healthyness'/>
-          </li>
-          <li>
-            <span class="span">Steps</span>
-            <textarea
-              rows="6"
-              cols="120"
-              onChange={handleRecipeChange}
-              value={recipeForm.steps}
-              id="steps"
-              type="textarea"
-              placeholder=""
-              name="steps"
-            ></textarea>
-            <p></p>
-          </li>
-        </ul>
+        
+      </div>
 
-        <input type="submit" value="Add recipe" class="Addbutton" />
-     
+      <div>
+        <div class="form-group">
+          <h1>Create you Recipe</h1>
+          <label htmlFor="title">title</label>
+          <input class="form-control" type="text" name="title" id="title" onChange={handlechange}/>
+          <br />
+          <label htmlFor="score">Score</label>
+          <input class="form-control" type="number" name="score" id="score" onChange={handlechange} max="100" min="0"/>
+          <br />
+          <label htmlFor="health">Healthyness</label>
+          <input class="form-control" type="number" name="healthyness" id="healthyness" onChange={handlechange} max="100" min="0"/>
+          <br />
+          <label htmlFor="image">Image</label>
+          <input class="form-control" type="url" name="image" id="image" onChange={handlechange}/>
+          <br />
+          <label htmlFor="summary">Summary</label>
+          <textarea name="summary" id="summary" cols="240" rows="10" placeholder="your summary" onChange={handlechange}></textarea>
+          <br />
+          <label htmlFor="steps">Steps</label>
+          <textarea name="steps" id="steps" cols="240" rows="10" onChange={handlechange}></textarea>
         </div>
+      </div>
+
+      <div>
+        <button class="">Add Button</button>
+      </div>
     </form>
-    </div>
-  );
+
+  )
 }
 
 

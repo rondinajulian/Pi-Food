@@ -1,10 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Card.css'
 
 
 
 export default function Card(props){
     return(
+        <Link key={props.id} to={`/recipe/${props.id}`} class='recipeID'>
         <div class="conteiner">
             <div class="card">
                 
@@ -22,5 +24,7 @@ export default function Card(props){
             </div>
        
         </div>
+        </Link>
+        
     )
 }

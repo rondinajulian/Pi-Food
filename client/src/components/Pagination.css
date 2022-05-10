@@ -1,19 +1,21 @@
-.avgbutton {
+.pagination .avgbutton {
     color:rgb(0, 0, 0);
     font-size: 14px;
     font-family:"Open Sans", sans-serif;
+    margin: 5px;
+    padding: 5px;
+    background-color: pink;
     border-radius: 16px;
-    border-width: 0px;
-    background-color: #e5e5e5;
+    border-width: 5px;
     border: 1px solid rgba(41, 41, 41, 0.589);
     height: 25px;
     white-space: nowrap;
-    align-items: center;
+    text-align: center;
   }
   
-  .avgbutton:hover {
+  .pagination .avgbutton:hover {
     background-color: rgb(232, 124, 124);
-    color: black;
+    color: white;
     border-width: 1px;
     border-color:pink;
   }

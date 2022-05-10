@@ -9,16 +9,18 @@ body{
     font-family: sans-serif;
     letter-spacing: 0.03em;
     line-height: 1.6;
+    
 }
 
 
 .conteiner{
-    width: 100%;
+    width: 410px;
     max-width: 1200px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     margin: auto;
+    margin-top: 30px;
 
 }
 

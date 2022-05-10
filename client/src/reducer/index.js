@@ -24,7 +24,7 @@ const initialState = {
           ...state,
           recipeForm: action.payload
       };
-  }
+    }
 
     if (action.type === "GET_RECIPES") {
       return {
@@ -33,7 +33,7 @@ const initialState = {
       };
     }
   
-    if (action.type === "GET_RECIPE_ID") {
+    if (action.type === "GET_RECIPES_ID") {
         return {
             ...state,
             recipeDetail: action.payload
@@ -88,12 +88,48 @@ const initialState = {
       }
     }
 
-    if (action.type === "SET_RECIPE_FORM") {
+
+    if(action.type === "ORDER_BY_NAME" ){
+      const sortedArrName =
+        action.payload === "asc"
+          ? state.recipes.sort(function (a, b) {
+              if (a.title > b.title) return 1;
+              if (a.title < b.title) return -1;
+              return 0;
+            })
+          : state.recipes.sort(function (a, b) {
+              if (a.title > b.title) return -1;
+              if (a.title < b.title) return 1;
+              return 0;
+            });
+            console.log(sortedArrName)
       return {
-          ...state,
-          recipeForm: action.payload
+        ...state,
+        recipes: sortedArrName,
       };
     }
+
+    if(action.type==="ORDER_BY_POINTS"){ 
+      const sortedArrPoints =
+        action.payload === "asc"
+          ? state.recipes.sort(function (a, b) {
+              if (a.score > b.score) return 1;
+              if (a.score < b.score) return -1;
+              return 0;
+            })
+          : state.recipes.sort(function (a, b) {
+              if (a.score > b.score) return -1;
+              if (a.score < b.score) return 1;
+              return 0;
+            });
+      return {
+        ...state,
+        recipes: sortedArrPoints,
+      };
+    }
+
+
+
 
     return state;
   }
