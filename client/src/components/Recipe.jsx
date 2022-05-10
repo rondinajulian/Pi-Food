@@ -11,6 +11,8 @@ export default function Recipe(){
     const dispatch = useDispatch();
     const [loaded, setLoaded] = useState(false);
     let {id} = useParams();
+
+
     
 
     useEffect(() => {
@@ -28,14 +30,16 @@ export default function Recipe(){
         <br />
 
         {loaded?(
-                   <div>
-                   <h2>{detail.title}</h2>
-                   <img src={detail.image}/>
-                   <p>{detail.score}</p>
-                   <p>{detail.healthyness}</p>
-                   <p>{detail.diets}</p>
-                   <p>{detail.summary}</p>
-                   <p>{detail.steps}</p>
+                   <div class="detail">
+                   <h2>{detail.title.length? detail.title:"No title"}</h2>
+                   <img src={detail.image.length? detail.image:"No image"}/>
+                   <p id="1">{detail.score}</p>
+                   <p class="health">{detail.healthyness}</p>
+                   <p class="diets">{detail.diets.length? detail.diets:"No diets"}</p>
+                   <br />
+                   <p>{detail.summary.length? detail.summary:"No summary"}</p>
+                   <br />
+                   <p>{detail.steps.length? detail.steps:"No steps"}</p>
                    </div>
         ):(
             <b class="loading">Loading...</b>

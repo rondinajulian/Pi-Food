@@ -18,10 +18,10 @@ export default function Home() {
   const dispatch = useDispatch();
   const recipes = useSelector((state) => state.recipes);
   const itemsPerPage = useSelector((state) => state.itemsPerPage);
-  // const currentPage = useSelector((state) => state.currentPage);
+  const currentPage = useSelector((state) => state.currentPage);
   const recipeOrder = useSelector(state => state.recipeOrder)
   const [/* order */, setOrder] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
+  const [/* currentpage */, setCurrentPage] = useState(1);
   const [loaded, setLoaded] = useState(false);
   // const [recipeOrigin, setRecipeOrigin] = useState("all");
 
@@ -70,11 +70,11 @@ export default function Home() {
       <div>
         <Navbar></Navbar>
 
-        <div class="">
+        <div class="content">
           <select
             name="orderAlphabetic"
             onChange={(e) => handleSortName(e)}
-            class=""
+            class="button"
           >
             <option>Order by name</option>
             <option value="asc">A-Z</option>
@@ -83,15 +83,16 @@ export default function Home() {
           <select
             name="orderPoints"
             onChange={(e) => handleSortPoints(e)}
-            class=""
+            class="button"
           >
             <option>Order by points</option>
             <option value="asc">Max-Min</option>
             <option value="des">Min-Max</option>
           </select>
-          {/* <select
+{/* 
+          <select
             onChange={(e) => handleFilterType(e)}
-            className={styles.selectDiets}
+            class="button"
           >
             <option value="all">All</option>
             {allDiets.map((type) => {
@@ -107,7 +108,7 @@ export default function Home() {
         {loaded ? (
           <div class="subconteiner">
             <div class="content">
-              {currentItems.map((r, id) => (
+              {currentItems.length? currentItems.map((r, id) => (
                 <Card
                   id={r.id}
                   key={id}
@@ -116,7 +117,13 @@ export default function Home() {
                   diets={r.diets}
                   score={r.score}
                 />
-              ))}
+              )):(
+                <div>
+                  <br />
+                  <b>"No se encontraron recetas"</b>
+                </div>
+                
+              )}
             </div>
             <div className="footer">
               <Pagination recipes={recipes} />
@@ -124,6 +131,7 @@ export default function Home() {
           </div>
         ) : (
           <div>
+            <br />
             <br />
             <b class="loading">Loading...</b>
           </div>

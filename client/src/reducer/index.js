@@ -128,6 +128,14 @@ const initialState = {
       };
     }
 
+    if(action.type === "GET_TYPES"){
+      return {
+        ...state,
+        recipeDiets: action.payload,
+      }
+    } 
+     
+
 
 
 
