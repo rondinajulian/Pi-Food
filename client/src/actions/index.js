@@ -85,9 +85,9 @@ export function filterRecipesByType(diet) {
   
 }
 
-export function getName(){
+export function getName(title){
   return async function (dispatch) {
-    const name  = await axios.get("http://localhost:3002/name/:"+name)
-      return (dispatch({ type: "GET_NAME", payload: Diets.data }));
+    const name  = await axios.get("http://localhost:3002/name/:"+ title)
+      return (dispatch({ type: "GET_NAME", payload: name}));
   };
 }

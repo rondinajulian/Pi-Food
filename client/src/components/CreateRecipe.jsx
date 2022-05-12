@@ -1,7 +1,7 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { Link, useNavigate} from "react-router-dom";
-import { useSelector,useDispatch } from 'react-redux';
-import { addDietForm, postRecipe, removeDietForm} from '../actions';
+import {useDispatch, useSelector } from 'react-redux';
+import { postRecipe, getDiets} from '../actions';
 import './CreateRecipe.css'
 
 
@@ -9,6 +9,7 @@ import './CreateRecipe.css'
 export default function CreateRecipe() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const recipeDiets = useSelector(state => state.recipeDiets )
   const [errors, setErrors] = useState({});
   const [post, setPost] = useState({
     title:'',
@@ -19,6 +20,11 @@ export default function CreateRecipe() {
     image:'',
     diets:[]
   });
+
+  useEffect(async ()  => {
+   await dispatch(getDiets()) ;
+  }, [dispatch]);
+
 
   function validate(post) {
     let errors = {};
@@ -44,15 +50,45 @@ export default function CreateRecipe() {
     if (!post.image) {
       errors.image = "A image is required.";
     }
-    // if (input.diets.length === 0) {
-    //   errors.diets = "At least 1 diet is required";
-    // }
+    if (!post.diets) {
+      errors.diets = "At least 1 diet is required";
+    }
     if (!post.steps.length) {
       errors.steps = "At least 1 step is required.";
     }
     return errors;
   }
 
+  function handleDiets(e){
+    if(!post.diets.includes(e.target.value)){
+      setPost({
+        ...post,
+        diets:[...post.diets, e.target.value]
+        
+      })
+    };
+    setErrors(
+      validate({
+        ...post,
+        diets:[...post.diets, e.target.value]
+      })
+    );
+  }
+
+  function handleDeleteDiet(d){
+    setPost({
+      ...post,
+      diets: post.diets.filter((e)=> e !== d)
+      
+    });
+    setErrors(
+      validate({
+        ...post,
+        diets: [...post.diets]
+      })
+    );
+
+  }
 
   function handlechange(e){
     setPost({
@@ -76,6 +112,7 @@ export default function CreateRecipe() {
       Object.values(post.title).length === 0 ||
       Object.values(post.score).length === 0 ||
       Object.values(post.image).length === 0 ||
+      Object.values(post.diets).length === 0 ||
       Object.values(post.summary).length === 0 ||
       Object.values(post.steps).length === 0
     ) {
@@ -84,6 +121,7 @@ export default function CreateRecipe() {
       dispatch(postRecipe(post));
       alert("Receta creada con exito");
       navigate("/Home");
+      console.log(post)
     }
   }
 
@@ -145,6 +183,34 @@ export default function CreateRecipe() {
             onChange={handlechange}
           />
           <p class="denger">{errors.image}</p>
+          <br />
+          <div>
+          <label htmlFor="title">Diets</label>
+          <select onChange={(e)=> handleDiets(e)}
+          defaultValue="default"
+          >
+            {recipeDiets.map((d) => {
+              return (
+                <option value={d.name} key={d.id}>
+                  {d.name}
+                </option>
+              );
+            })}
+
+          </select>
+          {errors.diets && <p>{errors.diets}</p>}
+          {post.diets.map((d)=>{
+            return(
+              <div key={d.id}>
+              <p>{d}</p>
+              <button onClick={()=> handleDeleteDiet(d)}>X</button>
+            </div>
+            )
+
+          })}
+          </div>
+          
+
           <br />
           <label htmlFor="summary">Summary</label>
           <textarea

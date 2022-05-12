@@ -19,12 +19,7 @@ const initialState = {
   };
 
   function reducer(state = initialState, action) {
-    if (action.type === "POST_RECIPE") {
-      return {
-          ...state,
-          recipeForm: action.payload
-      };
-    }
+
 
     if (action.type === "GET_RECIPES") {
       return {
@@ -71,26 +66,7 @@ const initialState = {
       };
     }
 
-    if (action.type === "REMOVE_DIET_FORM") {
-      return {
-        ...state,
-        recipeForm:{
-          ...state.recipeForm,
-          diets:state.recipeForm.diets.filter(diet=> diet !== action.payload)
-        }
-      }
-    }  
 
-    if (action.type === "ADD_DIET_FORM") {
-      return {
-        ...state,
-        recipeForm:{
-          ...state.recipeForm,
-          diets:state.recipeForm.diets.includes(action.payload)?
-          state.recipeForm.diets:state.recipeForm.diets.concat(action.payload)
-        }
-      }
-    }
 
 
     if(action.type === "ORDER_BY_NAME" ){

@@ -60,12 +60,6 @@ export default function Home() {
     setOrder(`${e.target.value} order`);
   }
 
-  // function handleFilterType(e) {
-  //   e.preventDefault();
-  //   dispatch(filterRecipesByType(e.target.value, recipeOrigin));
-  //   setCurrentPage(1);
-  // }
- 
 
 
 
@@ -76,7 +70,7 @@ export default function Home() {
 
     return (
       <div>
-        <Navbar setpage={setCurrentPage}></Navbar>
+        <Navbar setpage={setCurrentPage} ></Navbar>
 
         <div class="content">
           <select

@@ -25,8 +25,6 @@ router.get("/", async function (req, res, next) {
     }
     const dietsAll = await Diet.findAll();
     dietsAll.length ? res.json(dietsAll) : res.send("Diets not found");
-
-    console.log(dietsAll)
   } catch (e) {
     next(e);
   }
