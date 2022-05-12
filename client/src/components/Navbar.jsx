@@ -3,11 +3,11 @@ import './Navbar.css'
 import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
 
-export default function Navbar(getData){
+export default function Navbar(setpage){
     return(
         <div>
               <nav class="navbar">
-          <Link to="/Home" class="buttonHome" >
+          <Link to="/Home" class="buttonHome" onClick={setpage}>
             <label class="logo">Recipes.PI</label>
           </Link>
 
@@ -17,12 +17,7 @@ export default function Navbar(getData){
                 <a>Create Recipe</a>
               </Link>
             </li>
-            <li>
-              <Link to="createRecipe">
-                <a>Favorite</a>
-              </Link>
-            </li>
-          </ul>
+            </ul>
             <div class="searchBar">
                 <SearchBar/>
             </div>

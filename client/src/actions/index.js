@@ -13,8 +13,7 @@ export function getRecipes() {
 export function getRecipesByTitle(title) {
   return async function (dispatch) {
     let recipes = await axios.get("http://localhost:3002/recipes?name="+title);
-    console.log("esto trae " + recipes.data)
-    return dispatch({
+     return dispatch({
       type: "GET_RECIPES_TITLE",
       payload: recipes.data,
     });
@@ -24,7 +23,6 @@ export function getRecipesByTitle(title) {
 export function getRecipesByid(id) {
   return async function (dispatch) {
     const recipe = await axios.get("http://localhost:3002/recipes/"+id)
-    console.log('esta es la data ' + recipe.data + id)
     return dispatch({ type: "GET_RECIPES_ID", payload: recipe.data})
   };
 }
@@ -78,18 +76,18 @@ export function orderByPoints(payload) {
   };
 }
 
-export function filterRecipesByType(diet, recipeOrigin) {
-  return async function (dispatch) {
-    let recipes =
-      diet === "all"
-        ? await axios.get(`/recipes`)
-        : await axios.get(`/recipes/diet/${diet}`);
-
-    return dispatch({
+export function filterRecipesByType(diet) {
+  return {
       type: "FILTER_BY_TYPE",
-      payload: recipes.data,
-      recipeOrigin,
-    });
-  };
+      payload: diet
+      
+    }
+  
 }
 
+export function getName(){
+  return async function (dispatch) {
+    const name  = await axios.get("http://localhost:3002/name/:"+name)
+      return (dispatch({ type: "GET_NAME", payload: Diets.data }));
+  };
+}

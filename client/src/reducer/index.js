@@ -47,17 +47,21 @@ const initialState = {
       };
     }
 
-    if(action.type === "FILTER_CREATED"){
+    if(action.type === "FILTER_BY_TYPE"){
       const recipes = state.recipes;
-      const createdFilter =
-        action.payload === "created"
-          ? recipes.filter((e) => e.createdInDb)
-          : recipes.filter((e) => !e.createdInDb);
-      return {
+      const recipeByDiets = 
+      action.payload === "all"
+      ?recipes
+      :recipes.filter((r)=>{
+        let names = r.diets
+        if(names.includes(action.payload)) return r;
+        console.log(r)
+      })
+      return{
         ...state,
-        filterRecipes: action.payload === "all" ? state.recipes : createdFilter,
-    } } 
-
+        recipes:recipeByDiets
+      }
+    };
 
     if (action.type === "CHANGE_PAGE") {
 
@@ -128,7 +132,7 @@ const initialState = {
       };
     }
 
-    if(action.type === "GET_TYPES"){
+    if(action.type === "GET_DIETS"){
       return {
         ...state,
         recipeDiets: action.payload,

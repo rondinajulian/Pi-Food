@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import { useSelector,useDispatch } from 'react-redux';
 import { addDietForm, postRecipe, removeDietForm} from '../actions';
 import './CreateRecipe.css'
@@ -8,7 +8,7 @@ import './CreateRecipe.css'
 
 export default function CreateRecipe() {
   const dispatch = useDispatch();
-  // const [showErrors, setShowErrors] = useState(false);
+  const navigate = useNavigate();
   const [errors, setErrors] = useState({});
   const [post, setPost] = useState({
     title:'',
@@ -38,8 +38,8 @@ export default function CreateRecipe() {
     if (!post.score || post.score > 100 || post.score < 0) {
       errors.score = "A correct score is required 0 - 100.";
     }
-    if (!post.health ) {
-      errors.health = "Health score is required.";
+    if (!post.healthyness || post.healthyness > 100 || post.healthyness < 0) {
+      errors.healthyness = "Health score is required.";
     }
     if (!post.image) {
       errors.image = "A image is required.";
@@ -69,21 +69,22 @@ export default function CreateRecipe() {
    
   }
 
-  function handleSubmit(e){
+  function handleSubmit(e) {
     e.preventDefault();
 
-      console.log(Object.values(errors).length > 0)
-      
-    if (Object.values(errors).length > 0 ){
-      alert("aaaa")
-
-    }
-    else{
+    if (
+      Object.values(post.title).length === 0 ||
+      Object.values(post.score).length === 0 ||
+      Object.values(post.image).length === 0 ||
+      Object.values(post.summary).length === 0 ||
+      Object.values(post.steps).length === 0
+    ) {
+      alert("Porfavor completa todos los campos");
+    } else {
       dispatch(postRecipe(post));
-      alert("Receta creada con exito")
-
+      alert("Receta creada con exito");
+      navigate("/Home");
     }
-    
   }
 
   return (
@@ -127,12 +128,12 @@ export default function CreateRecipe() {
             type="number"
             name="healthyness"
             id="healthyness"
-            defaultValue={post.health}
+            defaultValue={post.healthyness}
             onChange={handlechange}
             max="100"
             min="0"
           />
-          <p class="denger">{errors.health}</p>
+          <p class="denger">{errors.healthyness}</p>
           <br />
           <label htmlFor="image">Image</label>
           <input
