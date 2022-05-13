@@ -1,13 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { changePage } from '../actions';
 import './Pagination.css'
 
 
-export default function Pagination({recipes}) {
+export default function Pagination({recipes, next}) {
   const pageNumbers      = []
   const itemsPerPage     = useSelector(state => state.itemsPerPage)
   const currentPage     = useSelector(state => state.currentPage)
+
+
+  
 
   
   const dispatch = useDispatch()
@@ -23,12 +26,23 @@ export default function Pagination({recipes}) {
       dispatch(changePage(len))
     }
   })
+
+
+
+
+
   return (
     <div class="pagination">
-      {pageNumbers.map(number=>          
-              <input class='avgbutton' type="button" key={number} onClick={()=>dispatch(changePage(number))} value={number}>
-          </input>)}
-
+    
+      {pageNumbers.map((number) => (
+        <input
+          class="avgbutton"
+          type="button"
+          key={number}
+          onClick={() => dispatch(changePage(number))}
+          value={number}
+        ></input>
+      ))}
     </div>
-  )
+  );
 };

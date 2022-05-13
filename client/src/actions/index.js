@@ -91,3 +91,12 @@ export function getName(title){
       return (dispatch({ type: "GET_NAME", payload: name}));
   };
 }
+
+// export function getTop(payload) {
+//   return {
+//       type: "GET_TOP",
+//       payload: payload
+      
+//     }
+  
+// }

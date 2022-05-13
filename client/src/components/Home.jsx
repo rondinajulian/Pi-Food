@@ -21,11 +21,10 @@ export default function Home() {
   const recipeDiets = useSelector((state)=> state.recipeDiets)
   const itemsPerPage = useSelector((state) => state.itemsPerPage);
   const currentPage = useSelector((state) => state.currentPage);
-  const recipeOrder = useSelector(state => state.recipeOrder)
   const [/* order */, setOrder] = useState("");
   const [/* currentpage */, setCurrentPage] = useState(1);
   const [loaded, setLoaded] = useState(false);
-  const [recipeOrigin, setRecipeOrigin] = useState("all");
+
 
 
 
@@ -62,8 +61,6 @@ export default function Home() {
 
 
 
-
-
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstitem = indexOfLastItem - itemsPerPage;
   const currentItems = recipes.slice(indexOfFirstitem, indexOfLastItem);
@@ -87,7 +84,7 @@ export default function Home() {
             onChange={(e) => handleSortPoints(e)}
             class="button"
           >
-            <option>points</option>
+            <option>Score</option>
             <option value="asc">Max-Min</option>
             <option value="des">Min-Max</option>
           </select>

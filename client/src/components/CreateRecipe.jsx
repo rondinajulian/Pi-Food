@@ -198,7 +198,7 @@ export default function CreateRecipe() {
             })}
 
           </select>
-          {errors.diets && <p>{errors.diets}</p>}
+          {errors.diets && <p class="denger">{errors.diets}</p>}
           {post.diets.map((d)=>{
             return(
               <div key={d.id}>

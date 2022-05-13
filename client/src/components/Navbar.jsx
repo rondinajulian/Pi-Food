@@ -3,7 +3,7 @@ import './Navbar.css'
 import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
 
-export default function Navbar(setpage,getDiets){
+export default function Navbar(setpage){
     return(
         <div>
               <nav class="navbar">

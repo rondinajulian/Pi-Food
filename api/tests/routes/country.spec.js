@@ -5,8 +5,11 @@ const app = require('../../src/app.js');
 const { Recipe, conn } = require('../../src/db.js');
 
 const agent = session(app);
+
 const recipe = {
-  name: 'Milanea a la napolitana',
+  title: 'Milanea a la napolitana',
+  summary:'x',
+  image:'https://image.com.ar'
 };
 
 describe('Recipe routes', () => {
@@ -21,4 +24,22 @@ describe('Recipe routes', () => {
       agent.get('/recipes').expect(200)
     );
   });
+});
+
+describe('POST/recipe', () => {
+  it('responds with 200', () => agent.post('/recipe').expect(200));
+  it('responds with the recipe', () =>
+    agent.post('/recipe')
+      .send({
+        title:"receta",
+        summary:"124",
+        score:"12",
+        image:"http://image.com",
+        healthyness:"10",
+        steps:"asdadasd"})
+
+      .then(() => {
+        expect('Receta creada');
+      })
+  );
 });

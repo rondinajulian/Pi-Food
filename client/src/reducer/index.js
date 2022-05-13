@@ -1,6 +1,7 @@
 const initialState = {
     recipes: [],
     recipeNameFilter:[],
+    recipesTop:[],
     recipeDetail: {},
     currentPage:1,
     itemsPerPage:9,
@@ -114,8 +115,25 @@ const initialState = {
         recipeDiets: action.payload,
       }
     } 
-     
 
+    // if(action.type === "GET_TOP"){
+    //     const filter = 
+    //     action.payload === "ok" 
+    //     ?state.recipes.sort(function (a, b) {
+    //         if (a.score > b.score) return 1;
+    //         if (a.score < b.score) return -1;
+    //         return 0;
+    //       }): state.recipes;
+
+    //     filter.slice(0,6)
+          
+      
+    //   return {
+    //     ...state,
+    //     recipesTop: filter,
+    //   }
+    // } 
+     
 
 
 

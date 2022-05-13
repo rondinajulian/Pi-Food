@@ -126,30 +126,51 @@ router.get('/:id', async (req,res)=>{
 })
 
 
-router.get('/name/:name', async(req,res)=>{
-  const {name} = req.params;
+// router.get('/name/:name', async(req,res)=>{
+//   const {name} = req.params;
+//   const respuesta = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=${recipeNumb}&addRecipeInformation=true`);
+//   const recipe = respuesta.data.results;
+//   try {
+//     if(respuesta){
+//       recipes = recipe.map(r=>({
+//         name:r.title
+//       }))
+//     }
+//       const recipeName =
+//       recipes.filter((r)=>{
+//         const filtername = r.name
+//         if(filtername.includes(name)) return filtername
+//       })
+
+    
+//       recipeName? res.json(recipeName) : res.send("No se encontro")
+    
+    
+//   } catch (error) {
+//     res.sendStatus(404).send(error)
+//   }
+// })
+
+
+router.get('/name/name', async(req,res)=>{
   const respuesta = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=${recipeNumb}&addRecipeInformation=true`);
   const recipe = respuesta.data.results;
   try {
     if(respuesta){
       recipes = recipe.map(r=>({
-        name:r.title
-      }))
-    }
-      const recipeName =
-      recipes.filter((r)=>{
-        const filtername = r.name
-        if(filtername.includes(name)) return filtername
-      })
+      name:r.title
+    }))}
+    
+    res.json(recipes)
 
-    
-      recipeName? res.json(recipeName) : res.send("No se encontro")
-    
-    
   } catch (error) {
-    res.sendStatus(404).send(error)
+    res.sendStatus(404).send("x")
   }
-})
+  res.json(recipe)
+
+  
+}
+)
 
 
 module.exports = router;
