@@ -24,10 +24,11 @@ body{
     text-decoration: none;
 }
 
-.logo{
+.navbar-brand{
     color: black;
     font-size: 35px;
-    padding: 0 50px;
+    padding: 0 30px;
+    margin-bottom: 10px;
     font-weight: bold;
     list-style: none;
     cursor: pointer;
@@ -38,7 +39,7 @@ body{
 .menu_items{
     display: flex;
     list-style: none;
-    margin-right: 30px;
+    margin-left: 12%;
 }
 
 .menu_items li{
@@ -46,10 +47,11 @@ body{
     margin: 0 5px;
 }
 
-.menu_items li a{
+.nav-link-active{
     padding:  7px 10px;
     text-decoration: none;
     font-size: 18px;
+    justify-content: center;
     display:block;
     text-transform: uppercase;
     color: black;
@@ -57,9 +59,12 @@ body{
 }
 
 
-.menu_items li:hover{
+.nav-link-active:hover{
     background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
     transition: .10s;
+    border-bottom: 1px solid black;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius:5px ;
 }
 
 .title{

@@ -15,8 +15,11 @@ body{
 
 .footer {   
     display: static;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    bottom: 0         ;
+    bottom: 0;
     left: 0;
     right: 0;    
     z-index:3
@@ -26,12 +29,24 @@ body{
 .recipeID{
       text-decoration: none;
       color: black;
-      width: 30px;
-      height: 20px;
-     
+
   }
 
   .navbar .searchBar{
     width: 25%;
     margin: 0;
+  }
+
+  .content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+
+
+  .spinner-border{
+    margin-top: 30px;
   }

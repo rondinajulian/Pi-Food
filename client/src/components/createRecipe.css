@@ -4,21 +4,28 @@
     box-sizing: border-box;
 }
 
-body{
-    background-attachment: fixed;
-    margin: 0;
+.gral{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 400px;
 }
-
-
 .modalHeader{
     float: right;
     width: 25px;
+    height: 25px;
     border-radius: 5px;
-    color: white;
     background-color: rgb(220, 89, 89);
     cursor: pointer;
     text-decoration: none;
     position: relative;
+}
+
+.modalHeader .X{
+    text-decoration: none;
+    color: white;
 }
 
 .modalHeader:hover{
@@ -26,15 +33,20 @@ body{
     color: black;
 }
 
+.modalHeader .X:hover{
+    color:black;
+}
+
 .formulario{
     width: 650px;
     margin: auto;
-    height: auto;
+    height:auto;
     background: rgba(0, 0, 0, 0.3);
     margin-top: 30px;
     padding: 10px 20px;
     box-sizing: border-box;
     border-radius: 10px;
+    margin-bottom: 30px;
 }
 
 .form-group h1{
@@ -42,7 +54,9 @@ body{
     margin: 0;
     font-size: 30px;
     margin-bottom: 20px;
-   margin-left: 50px;
+    margin-left: 50px;
+    color: black;
+    font-weight: bold;
 }
 
 
@@ -56,6 +70,7 @@ body{
 
 .form-group textarea{
     width: 100%;
+    height: 100px;
 }
 
 .Addbutton{

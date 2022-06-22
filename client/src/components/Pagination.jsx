@@ -27,7 +27,13 @@ export default function Pagination({recipes, next}) {
     }
   })
 
-
+  const toTop=(number)=>{
+    window.scrollTo({
+      top:0,
+      behavior:'smooth'
+    })
+    dispatch(changePage(number))
+  }
 
 
 
@@ -39,7 +45,7 @@ export default function Pagination({recipes, next}) {
           class="avgbutton"
           type="button"
           key={number}
-          onClick={() => dispatch(changePage(number))}
+          onClick={() => toTop(number)}
           value={number}
         ></input>
       ))}

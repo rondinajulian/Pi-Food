@@ -18,7 +18,7 @@ class Landing extends Component {
             bootcamp.
           </p>
               <Link to='/Home' class="button"> 
-              <button class="button"><span>Insert</span></button>
+                <span>Enter</span>
                </Link>
         </div>
 

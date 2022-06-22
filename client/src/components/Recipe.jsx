@@ -42,7 +42,9 @@ export default function Recipe(){
                    <p>{detail.steps.length? detail.steps:"No steps"}</p>
                    </div>
         ):(
-            <b class="loading">Loading...</b>
+            <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
         )}
  
     

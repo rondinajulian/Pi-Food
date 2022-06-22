@@ -1,11 +1,13 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body{
     width: 100%;
-    height: 100%;
+    height: 100vh;
+    display: flex;
     font-family: sans-serif;
     letter-spacing: 0.03em;
     line-height: 1.6;
@@ -13,12 +15,13 @@ body{
 }
 
 
+
 .conteiner{
-    width: 410px;
-    max-width: 1200px;
+    width: 450px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
     margin: auto;
     margin-top: 30px;
 
@@ -33,42 +36,46 @@ body{
     flex-direction: column;
     display: flex;
     width: 60px;
-    font-size: 14px;
+    font-size: 11px;
     text-align: center;
 }
 
 .conteiner .card{
+    box-sizing: border-box;
     width: 400px;
-    height: auto;
-    border-radius: 30px;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    margin: 20px;
+    height: 490px;
+    border-radius: 6px;
     overflow: hidden;
-    margin: 5px;
-    text-align: center;
-    transition: all 0.25s;
     background-color: white;
-    font-size: 15px;
+    box-shadow: rgba(0, 0, 0, 0.6);
+    cursor: default;
+    transform: all 500ms ease;
+    align-items: center;
 }
 
 
 .conteiner img{
-    width: 300px;
-    height: 200px;
+    width: 310px;
+    height: 210px;
     border-radius: 8px;
-    margin-top: 30px;
+    margin-top: 10px;
+    border: 1px solid black;
+
 }
 
 .conteiner .diets{
     float: left;
-    margin-top: 250px;
     margin: 15px 70px;
+    width: 70px;
+
 }
 
 
 .conteiner .score{
-    float: right;
-    margin-top: 250px;
+    float: left;
     margin: 15px 70px;
+    width: 70px;
 }
 
 .conteiner .card:hover{

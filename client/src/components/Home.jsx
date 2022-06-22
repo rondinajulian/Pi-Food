@@ -129,11 +129,9 @@ export default function Home() {
             </div>
           </div>
         ) : (
-          <div>
-            <br />
-            <br />
-            <b class="loading">Loading...</b>
-          </div>
+          <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
         )}
       </div>
     );

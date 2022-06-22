@@ -126,10 +126,11 @@ export default function CreateRecipe() {
   }
 
   return (
+    <div className="gral">
     <form onSubmit={(e) => handleSubmit(e)} class="formulario">
       <div class="modalHeader">
-        <Link to="/Home">
-          <p class="X">X</p>
+        <Link to="/Home" class="X">
+          <p >X</p>
         </Link>
       </div>
 
@@ -240,6 +241,7 @@ export default function CreateRecipe() {
         <button class="Addbutton" type="submit">Add Button</button>
       </div>
     </form>
+    </div>
   );
 }
 

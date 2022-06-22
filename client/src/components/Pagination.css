@@ -1,14 +1,14 @@
 .pagination .avgbutton {
     color:rgb(0, 0, 0);
-    font-size: 14px;
+    font-size: 17px;
     font-family:"Open Sans", sans-serif;
     margin: 5px;
-    padding: 5px;
+    padding: 5px 5px;
     background-color: pink;
     border-radius: 16px;
     border-width: 5px;
     border: 1px solid rgba(41, 41, 41, 0.589);
-    height: 25px;
+    height: 40px;
     white-space: nowrap;
     text-align: center;
   }
